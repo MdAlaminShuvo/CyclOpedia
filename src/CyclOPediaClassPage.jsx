@@ -30,6 +30,20 @@ class CyclOPediaClassPage extends React.Component {
   componentWillUnmount() {
     console.log("Component Did UnMount");
   }
+  handleAddStudent = () => {
+    this.setState((prevState) => {
+      return {
+        studentCount: prevState.studentCount + 1,
+      };
+    });
+  };
+  handleRemoveAllStudent = () => {
+    this.setState((prevState) => {
+      return {
+        studentCount: 0,
+      };
+    });
+  };
   render() {
     console.log("Render Component");
     return (
@@ -47,6 +61,24 @@ class CyclOPediaClassPage extends React.Component {
             <br />
           </div>
         )}
+        <div className="p-3">
+          <span className="h4 text-success">Students</span>
+          <br />
+          <div>Student Count :{this.state.studentCount}</div>
+          <button
+            className="btn btn-success btn-sm"
+            onClick={this.handleAddStudent}
+          >
+            Add Student
+          </button>
+          &nbsp;
+          <button
+            className="btn btn-danger btn-sm"
+            onClick={this.handleRemoveAllStudent}
+          >
+            Remove Student
+          </button>
+        </div>
       </div>
     );
   }
